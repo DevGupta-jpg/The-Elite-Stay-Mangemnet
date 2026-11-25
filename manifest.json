@@ -1,0 +1,14 @@
+{
+  "name": "The Elite Stay PG & Hostel Management",
+  "short_name": "The Elite Stay",
+  "description": "Hostel management app for students, fees, expenses, visitors and reports.",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "background_color": "#f6f9ff",
+  "theme_color": "#0866f5",
+  "icons": [
+    {"src":"assets/icons/logo.svg","sizes":"any","type":"image/svg+xml","purpose":"any maskable"}
+  ]
+}

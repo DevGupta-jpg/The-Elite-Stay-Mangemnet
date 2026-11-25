@@ -1,0 +1,5 @@
+const CACHE='elite-stay-v1';
+const CORE=['./','./index.html','./manifest.json','./service-worker.js','./assets/css/style.css','./assets/js/data.js','./assets/js/utils.js','./assets/js/app.js','./assets/js/dashboard.js','./assets/icons/logo.svg','./pages/students.html','./pages/student-profile.html','./pages/fees.html','./pages/expenses.html','./pages/visitors.html','./pages/reports.html','./pages/settings.html','./assets/js/students.js','./assets/js/profile.js','./assets/js/fees.js','./assets/js/expenses.js','./assets/js/visitors.js','./assets/js/reports.js'];
+self.addEventListener('install',e=>e.waitUntil(caches.open(CACHE).then(c=>c.addAll(CORE)).then(()=>self.skipWaiting())));
+self.addEventListener('activate',e=>e.waitUntil(self.clients.claim()));
+self.addEventListener('fetch',e=>{if(e.request.method!=='GET')return;e.respondWith(caches.match(e.request).then(cached=>cached||fetch(e.request).then(res=>{const copy=res.clone();caches.open(CACHE).then(c=>c.put(e.request,copy));return res}).catch(()=>caches.match('./index.html'))))});
